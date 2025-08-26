@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { useCart } from "../context/CartContext";
 
 
 interface BundleSelectorProps {
@@ -9,7 +8,6 @@ interface BundleSelectorProps {
 }
 
 const BundleSelector: React.FC<BundleSelectorProps> = ({ size, flavours }) => {
-    const { addToCart } = useCart();
 
     const [quantities, setQuantities] = useState<{ [key: string]: number }>(
         Object.fromEntries(flavours.map((flavour) => [flavour, 0]))

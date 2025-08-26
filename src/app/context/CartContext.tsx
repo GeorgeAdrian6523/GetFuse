@@ -2,19 +2,24 @@
 "use client";
 import React, { createContext, useContext, useState } from "react";
 
-interface CartItem {
-    key: string;
+export interface CartItem {
     id: number;
     name: string;
     quantity: number;
-    totals: { line_total: string };
+    meta?: Record<string, unknown>;
 }
 
-interface CartContextType {
+export interface CartContextType {
     cart: CartItem[];
-    addToCart: (productId: number, quantity?: number, meta?: any) => Promise<void>;
-    removeFromCart: (key: string) => Promise<void>;
+    addToCart: (
+        productId: number,
+        quantity?: number,
+        meta?: Record<string, unknown>
+    ) => Promise<void>;
 }
+
+
+
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
@@ -50,7 +55,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+        <CartContext.Provider value={{ cart, addToCart }}>
             {children}
         </CartContext.Provider>
     );
