@@ -7,6 +7,7 @@ interface BundleCardProps {
     price: string;
     size: number;
     flavours: string[];
+
 }
 
 const BundleCard: React.FC<BundleCardProps> = ({ name, price, size, flavours }) => {
