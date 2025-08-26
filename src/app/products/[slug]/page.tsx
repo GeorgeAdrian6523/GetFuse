@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { getProductBySlug, getProductsByCategory } from "../../../../lib/woocommerce";
 import { notFound } from "next/navigation";
