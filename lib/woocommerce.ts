@@ -1,12 +1,12 @@
 export async function getProducts() {
-  const url = `${process.env.WC_API_URL}/products?per_page=20`;
+  const url = `${process.env.NEXT_PUBLIC_WC_API_URL}/products?per_page=20`;
 
   const res = await fetch(url, {
     headers: {
       Authorization:
         "Basic " +
         Buffer.from(
-          `${process.env.WC_CONSUMER_KEY}:${process.env.WC_CONSUMER_SECRET}`
+          `${process.env.NEXT_PUBLIC_WC_CONSUMER_KEY}:${process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET}`
         ).toString("base64"),
     },
     next: { revalidate: 60 },
@@ -22,14 +22,14 @@ export async function getProducts() {
 // Get a single product by slug
 export async function getProductBySlug(slug: string) {
   try {
-    const url = `${process.env.WC_API_URL}/products?slug=${slug}`;
+    const url = `${process.env.NEXT_PUBLIC_WC_API_URL}/products?slug=${slug}`;
     
     const res = await fetch(url, {
       headers: {
         Authorization:
           "Basic " +
           Buffer.from(
-            `${process.env.WC_CONSUMER_KEY}:${process.env.WC_CONSUMER_SECRET}`
+            `${process.env.NEXT_PUBLIC_WC_CONSUMER_KEY}:${process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET}`
           ).toString("base64"),
       },
       next: { revalidate: 3600 }, // cache for 1 hour
@@ -49,14 +49,14 @@ export async function getProductBySlug(slug: string) {
 
 // Get products by category
 export async function getProductsByCategory(categoryId: number) {
-  const url = `${process.env.WC_API_URL}/products?category=${categoryId}`;
+  const url = `${process.env.NEXT_PUBLIC_WC_API_URL}/products?category=${categoryId}`;
 
   const res = await fetch(url, {
     headers: {
       Authorization:
         "Basic " +
         Buffer.from(
-          `${process.env.WC_CONSUMER_KEY}:${process.env.WC_CONSUMER_SECRET}`
+          `${process.env.NEXT_PUBLIC_WC_CONSUMER_KEY}:${process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET}`
         ).toString("base64"),
     },
     next: { revalidate: 60 },
